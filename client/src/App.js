@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import Landing from './components/Landing';
 import Feed from './components/Feed';
 import { useState, useEffect } from 'react';
+import Mixer from './components/Mixer';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -38,10 +39,12 @@ function App() {
           :
           null
         }
-        <Link to='/'>HELLO</Link>
+        <Link to='/'>HELLO</Link><br />
+        <Link to='/mixer'>Mixer</Link>
         <Routes>
-          <Route path='/' element={<Landing onLogin={onLogin} user={user}/>} />
           <Route path='/feed' element={<Feed user={user}/>} />
+          <Route path='/mixer' element={<Mixer />} />
+          <Route path='/' element={<Landing onLogin={onLogin} user={user}/>} />
         </Routes>
       </Router>
     </div>
