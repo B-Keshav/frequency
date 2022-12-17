@@ -4,7 +4,7 @@ function Mixer() {
     // synth.triggerAttackRelease("E4", "8n", now + 0.5)
     // synth.triggerAttackRelease("G4", "8n", now + 1)
     // const now = Tone.now()
-    const synth = new Tone.MetalSynth().toDestination();
+    const synth = new Tone.AMSynth().toDestination();
 
     async function playSound(e) {
         // console.log(e.target.value)
@@ -12,11 +12,25 @@ function Mixer() {
         await Tone.start()
     }
 
-    const keys = ['C2','C#2','D2','D#2','E2','F2','F#2','G2','G#2','A2','A#2','B2','C3','C#3','D3','D#3','E3','F3','F#3','G3','G#3','A3','A#3','B3','C4','C#4','D4','D#4','E4','F4','F#4','G4','G#4','A4','A#4','B4'] 
+    const keys = ['C2', 'C#2', 'D2', 'D#2', 'E2', 'F2', 'F#2', 'G2', 'G#2', 'A2', 'A#2', 'B2', 'C3', 'C#3', 'D3', 'D#3', 'E3', 'F3', 'F#3', 'G3', 'G#3', 'A3', 'A#3', 'B3', 'C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4']
 
+    // const renderAllKeys = keys.map((key) => {
+    //     return (
+    //         <>
+    //             <button value={`${key}, 1`} >{key}</button>
+    //             <button value={`${key}, 2`} >{key}</button>
+    //             <button value={`${key}, 3`} >{key}</button>
+    //             <button value={`${key}, 4`} >{key}</button>
+    //             <button value={`${key}, 5`} >{key}</button>
+    //             <button value={`${key}, 6`} >{key}</button>
+    //             <button value={`${key}, 7`} >{key}</button>
+    //             <button value={`${key}, 8`} >{key}</button>
+    //         </>
+    //     )
+    // })
 
     return (
-        <div style={{width: "50px"}}>
+        <div style={{ width: "50px" }}>
             <button value='C2' onClick={playSound}>C2</button>
             <button value='C#2' onClick={playSound}>C#2</button>
             <button value='D2' onClick={playSound}>D2</button>
