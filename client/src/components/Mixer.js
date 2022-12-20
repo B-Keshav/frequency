@@ -1,73 +1,145 @@
 import * as Tone from 'tone'
+import KeyRow from './KeyRow';
 
 function Mixer() {
-    // synth.triggerAttackRelease("E4", "8n", now + 0.5)
-    // synth.triggerAttackRelease("G4", "8n", now + 1)
-    // const now = Tone.now()
-    const synth = new Tone.AMSynth().toDestination();
+    const synth = new Tone.PolySynth(Tone.MembraneSynth).toDestination();
 
-    async function playSound(e) {
-        // console.log(e.target.value)
-        synth.triggerAttackRelease(e.target.value, "8n")
-        await Tone.start()
+    let seq
+
+    function playSound() {
+        const notesToPlay = [col1, col2, col3, col4, col5, col6, col7, col8]
+        console.log(notesToPlay)
+        Tone.Transport.bpm.value = 120
+        seq = new Tone.Sequence((time,note) => {
+            synth.triggerAttackRelease(note, 1.0, time)
+        }, 
+        notesToPlay,
+        "8n"
+        )
+        seq.start()
+        Tone.Transport.start()
     }
 
-    const keys = ['C2', 'C#2', 'D2', 'D#2', 'E2', 'F2', 'F#2', 'G2', 'G#2', 'A2', 'A#2', 'B2', 'C3', 'C#3', 'D3', 'D#3', 'E3', 'F3', 'F#3', 'G3', 'G#3', 'A3', 'A#3', 'B3', 'C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4']
+    function stopSound(){
+        seq.stop()
+        Tone.Transport.stop()
+    }
 
-    // const renderAllKeys = keys.map((key) => {
-    //     return (
-    //         <>
-    //             <button value={`${key}, 1`} >{key}</button>
-    //             <button value={`${key}, 2`} >{key}</button>
-    //             <button value={`${key}, 3`} >{key}</button>
-    //             <button value={`${key}, 4`} >{key}</button>
-    //             <button value={`${key}, 5`} >{key}</button>
-    //             <button value={`${key}, 6`} >{key}</button>
-    //             <button value={`${key}, 7`} >{key}</button>
-    //             <button value={`${key}, 8`} >{key}</button>
-    //         </>
-    //     )
-    // })
+    const notes = ['C2', 'C#2', 'D2', 'D#2', 'E2', 'F2', 'F#2', 'G2', 'G#2', 'A2', 'A#2', 'B2', 'C3', 'C#3', 'D3', 'D#3', 'E3', 'F3', 'F#3', 'G3', 'G#3', 'A3', 'A#3', 'B3', 'C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4']
+
+    const col1 = []
+    const col2 = []
+    const col3 = []
+    const col4 = []
+    const col5 = []
+    const col6 = []
+    const col7 = []
+    const col8 = []
+
+    function addSound(e) {
+        const note = e.target.value.split(', ')
+        if (note[1] === '1') {
+            col1.push(note[0])
+        }
+        else if (note[1] === '2') {
+            col2.push(note[0])
+        }
+        else if (note[1] === '3') {
+            col3.push(note[0])
+        }
+        else if (note[1] === '4') {
+            col4.push(note[0])
+        }
+        else if (note[1] === '5') {
+            col5.push(note[0])
+        }
+        else if (note[1] === '6') {
+            col6.push(note[0])
+        }
+        else if (note[1] === '7') {
+            col7.push(note[0])
+        }
+        else if (note[1] === '8') {
+            col8.push(note[0])
+        }
+    }
+
+    function removeOneNote(col, note) {
+        for (let i = 0; i < col.length; i++) {
+            if (col[i] === note) {
+                col.splice(i, 1);
+            }
+        }
+    }
+
+    function removeSound(e) {
+        const note = e.target.value.split(', ')
+        if (note[1] === '1') {
+            removeOneNote(col1, note[0])
+        }
+        else if (note[1] === '2') {
+            removeOneNote(col2, note[0])
+
+        }
+        else if (note[1] === '3') {
+            removeOneNote(col3, note[0])
+
+        }
+        else if (note[1] === '4') {
+            removeOneNote(col4, note[0])
+
+        }
+        else if (note[1] === '5') {
+            removeOneNote(col5, note[0])
+
+        }
+        else if (note[1] === '6') {
+            removeOneNote(col6, note[0])
+
+        }
+        else if (note[1] === '7') {
+            removeOneNote(col7, note[0])
+
+        }
+        else if (note[1] === '8') {
+            removeOneNote(col8, note[0])
+        }
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+    }
+
+    const renderAllKeys = notes.map((note) => {
+        return (
+            <div key={note} className='keyboard'>
+
+                <p>{note}</p>
+                <KeyRow note={note} addSound={addSound} removeSound={removeSound} />
+            </div>
+        )
+    })
 
     return (
-        <div style={{ width: "50px" }}>
-            <button value='C2' onClick={playSound}>C2</button>
-            <button value='C#2' onClick={playSound}>C#2</button>
-            <button value='D2' onClick={playSound}>D2</button>
-            <button value='D#2' onClick={playSound}>D#2</button>
-            <button value='E2' onClick={playSound}>E2</button>
-            <button value='F2' onClick={playSound}>F2</button>
-            <button value='F#2' onClick={playSound}>F#2</button>
-            <button value='G2' onClick={playSound}>G2</button>
-            <button value='G#2' onClick={playSound}>G#2</button>
-            <button value='A2' onClick={playSound}>A2</button>
-            <button value='A#2' onClick={playSound}>A#2</button>
-            <button value='B2' onClick={playSound}>B2</button>
-            <button value='C3' onClick={playSound}>C3</button>
-            <button value='C#3' onClick={playSound}>C#3</button>
-            <button value='D3' onClick={playSound}>D3</button>
-            <button value='D#3' onClick={playSound}>D#3</button>
-            <button value='E3' onClick={playSound}>E3</button>
-            <button value='F3' onClick={playSound}>F3</button>
-            <button value='F#3' onClick={playSound}>F#3</button>
-            <button value='G3' onClick={playSound}>G3</button>
-            <button value='G#3' onClick={playSound}>G#3</button>
-            <button value='A3' onClick={playSound}>A3</button>
-            <button value='A#3' onClick={playSound}>A#3</button>
-            <button value='B3' onClick={playSound}>B3</button>
-            <button value='C4' onClick={playSound}>C4</button>
-            <button value='C#4' onClick={playSound}>C#4</button>
-            <button value='D4' onClick={playSound}>D4</button>
-            <button value='D#4' onClick={playSound}>D#4</button>
-            <button value='E4' onClick={playSound}>E4</button>
-            <button value='F4' onClick={playSound}>F4</button>
-            <button value='F#4' onClick={playSound}>F#4</button>
-            <button value='G4' onClick={playSound}>G4</button>
-            <button value='G#4' onClick={playSound}>G#4</button>
-            <button value='A4' onClick={playSound}>A4</button>
-            <button value='A#4' onClick={playSound}>A#4</button>
-            <button value='B4' onClick={playSound}>B4</button>
-        </div>
+        <>
+            <br />
+            <button onClick={playSound}>Play</button>
+            <button onClick={stopSound}>Stop</button>
+            <div className='notes-row'>
+                <h5></h5>
+                <h5>1</h5>
+                <h5>2</h5>
+                <h5>3</h5>
+                <h5>4</h5>
+                <h5>5</h5>
+                <h5>6</h5>
+                <h5>7</h5>
+                <h5>8</h5>
+            </div>
+            <div className='keyboard_container'>
+                {renderAllKeys}
+            </div>
+        </>
     )
 };
 
