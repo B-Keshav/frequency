@@ -1,19 +1,23 @@
+.keyboard_container{
+  display: flex;
+  justify-content: flex-start;
+}
+
 .keyboard{
   display: flex;
-  height: 80px;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .keyboard p{
   width: 50px;
+  text-align: center;
 }
 
-.notes-row{
-  display: flex;
-  justify-content: center;
-}
-.notes-row h5{
-  padding: 23px;
+.keyboard h4{
+  padding-left: 50px;
+  padding-right: 10px;
+  height: 11px;
+  text-align: center;
 }
 
 .unclicked_key{

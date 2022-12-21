@@ -5,6 +5,8 @@ class User < ApplicationRecord
     has_many :following_users, foreign_key: :followee_id, class_name: "Relationship"
     has_many :followers, through: :following_users, dependent: :destroy
 
+    has_many :songs
+
     has_secure_password
 
     validates :username, presence: true, uniqueness: true

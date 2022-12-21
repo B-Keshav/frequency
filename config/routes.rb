@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :songs, only: [:index, :show, :create]
   resources :relationships
-  resources :users, only: [:index, :create]
+  resources :users, only: [:index, :show, :create]
   
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
