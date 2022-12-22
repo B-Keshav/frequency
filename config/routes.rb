@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get '/me', to: "users#show"
+  get '/user/:id', to: "users#other_profile"
 
 
   get "/hello", to: "application#hello_wrld"
