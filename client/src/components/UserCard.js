@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom"
+import SongCard from "./SongCard"
 
 function UserCard({ aUser }) {
     const { id, profile_pic, username, songs } = aUser
 
     const renderSongs = songs.map(song => {
-        return (
-            <div>
-                Temp
-            </div>
-        )
+        return <SongCard key={song.title} song={song} />
     })
 
     return (
@@ -19,11 +16,10 @@ function UserCard({ aUser }) {
             <div>
                 {renderSongs.length === 0 ?
                     <>
-                        <h4>This will only show the most recent song</h4>
                         <h4>{"No song to show yet :("}</h4>
                     </>
                     :
-                    renderSongs
+                    renderSongs[renderSongs.length - 1] 
 
                 }
             </div>
