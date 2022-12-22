@@ -4,15 +4,10 @@ import KeyRow from './KeyRow';
 
 function Mixer() {
     const [synthState, setSynthState] = useState("Synth")
-    const [songForm, setSongForm] = useState({
-        title: "",
-        lyrics: ""
-    })
+    const [title, setTitle] = useState("")
 
     function handleChange(e) {
-        const { name, value } = e.target
-
-        setSongForm({ ...songForm, [name]: value })
+        setTitle(e.target.value)
     }
 
     const synth = new Tone.PolySynth(Tone[synthState]).toDestination();
@@ -40,45 +35,41 @@ function Mixer() {
     function handleSubmit(e) {
         e.preventDefault()
         console.log("Save Button")
-
-        const recorder = new Tone.Recorder()
-        synth.connect(recorder)
-        recorder.start()
-        playSound()
-
-        setTimeout(async () => {
-            // the recorded audio is returned as a blob
-            stopSound()
-            const recording = await recorder.stop();
-            console.log(recording)
-
-            // fetch('/songs',{
-            //     method: "POST",
-            //     headers: {
-            //         "content-type": "application/json"
-            //     },
-            //     body: JSON.stringify({
-            //         music: recording,
-            //         title: songForm.title,
-            //         lyrics: songForm.lyrics
-            //     })
-            // })
-            // .then(res => {
-            //     if(res.ok){
-            //         res.jons().then(data => console.log(data))
-            //     }else{
-            //         res.json().then(data => console.log(data, "smt went wrong"))
-            //     }
-            // })
-            
-            // download the recording by creating an anchor element and blob url
-            // const url = URL.createObjectURL(recording);
-            // console.log(url)
-            // const anchor = document.createElement("a");
-            // anchor.download = "recording.webm";
-            // anchor.href = url;
-            // anchor.click();
-        }, 4000);
+        
+        let col1Str = col1.join()
+        let col2Str = col2.join()
+        let col3Str = col3.join()
+        let col4Str = col4.join()
+        let col5Str = col5.join()
+        let col6Str = col6.join()
+        let col7Str = col7.join()
+        let col8Str = col8.join()
+        console.log(col1Str, col2Str, col3Str, col4Str, col5Str, col6Str, col7Str, col8Str)
+        
+        fetch('/songs',{
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({
+                title: title,
+                synth: synthState,
+                col1: col1Str,
+                col2: col2Str,
+                col3: col3Str,
+                col4: col4Str,
+                col5: col5Str,
+                col6: col6Str,
+                col7: col7Str,
+                col8: col8Str
+            })
+        }).then(res => {
+            if(res.ok){
+                res.json().then(data => console.log(data))
+            }else{
+                res.json().then(errors => console.log(errors, "smt went wrong"))
+            }
+        })
 
     }
 
@@ -210,14 +201,7 @@ function Mixer() {
                     name='title'
                     placeholder='Enter a Title'
                     onChange={handleChange}
-                />
-                <br />
-                <textarea
-                    rows="20"
-                    cols="60"
-                    name='lyrics'
-                    placeholder='Enter Your Lyrics Here...'
-                    onChange={handleChange}
+                    value={title}
                 />
             </form>
             <button onClick={handleSubmit}>Save</button>

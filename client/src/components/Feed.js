@@ -30,7 +30,7 @@ function Feed({user}){
 
     return(
         <div>
-            Feed
+            <h1>Feed</h1>
             {renderUsers}
         </div>
     )

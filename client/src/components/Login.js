@@ -15,7 +15,6 @@ function Login({ onLogin }) {
 
     function onLoginSubmit(e) {
         e.preventDefault()
-        console.log("submitted")
         fetch('/login', {
             method: "POST",
             headers: {
@@ -33,7 +32,6 @@ function Login({ onLogin }) {
                     res.json().then(errors => setErrors(errors))
                 }
             })
-
             setLoginForm({
                 username: "",
                 password: ""
