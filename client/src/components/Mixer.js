@@ -44,7 +44,6 @@ function Mixer() {
         let col6Str = col6.join()
         let col7Str = col7.join()
         let col8Str = col8.join()
-        console.log(col1Str, col2Str, col3Str, col4Str, col5Str, col6Str, col7Str, col8Str)
         
         fetch('/songs',{
             method: "POST",

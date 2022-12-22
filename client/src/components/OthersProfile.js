@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
+import SongCard from "./SongCard"
 
 function OthersProfile({ user }) {
     const [userProfile, setUsersProfile] = useState(null)
 
     let { id } = useParams()
-    console.log(id)
 
     useEffect(() => {
         fetch(`/user/${id}`)
@@ -23,17 +23,12 @@ function OthersProfile({ user }) {
     const { username, bio, profile_pic, songs } = userProfile
 
     const renderSongs = songs.map(song => {
-        return (
-            <div>
-                Temp
-            </div>
-        )
+        return <SongCard key={song.title} song={song} />
     })
-
-    console.log(userProfile)
 
     return (
         <>
+            <Link to='/feed'>Feed</Link>
             <div>
                 <h1>{username}</h1>
                 <img src="https://sienaconstruction.com/wp-content/uploads/2017/05/test-image.jpg" alt={profile_pic} />
