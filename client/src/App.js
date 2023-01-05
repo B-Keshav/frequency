@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 import Mixer from './components/Mixer';
 import ProfilePage from './components/ProfilePage';
 import OthersProfile from './components/OthersProfile';
+import myLogo from "./images/Frequency.png"
+
 
 function App() {
   const [user, setUser] = useState(null)
@@ -39,29 +41,31 @@ function App() {
 
   return (
     <div className="App">
-      {user ?
-        <>
-          <button onClick={handleLogOut}>LogOut</button>
-          <br />
-          <Link to='/myprofile'>Profile</Link>
-          <br />
-          <Link to='/mixer'>Mixer</Link>
-          <br />
-          <Link to='/feed'>Feed</Link>
-          <br />
-        </>
-        :
-        null
-      }
-      <Link to='/'>Home</Link><br />
+      <img src={myLogo} alt="logo" className="landing_logo" />
+      <div className='navbar'>
+        {user ?
+          <>
+            <button className="button-27" ><Link to='/'> Home </Link></button>
+            <button className="button-27" ><Link to='/feed'> Feed </Link></button>
+            <button className="button-27" ><Link to='/mixer'> Mixer </Link></button>
+            <button className="button-27" ><Link to='/myprofile'> Profile </Link></button>
+            <button className="button-27" onClick={handleLogOut}> Logout </button>
+          </>
+          :
+          <>
+            <button className="button-27" ><Link to='/'> Home </Link></button>
+          </>
+        }
+      </div>
       <Routes>
         <Route path='/feed' element={<Feed user={user} />} />
         <Route path='/mixer' element={<Mixer />} />
         <Route path='/myprofile' element={<ProfilePage user={user} />} />
-        <Route path='/profile/:id' element={<OthersProfile user={user}/>} />
+        <Route path='/profile/:id' element={<OthersProfile user={user} />} />
         <Route path='/' element={<Landing onLogin={onLogin} user={user} />} />
       </Routes>
     </div>
+
   );
 }
 

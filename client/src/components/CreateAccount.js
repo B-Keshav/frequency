@@ -42,13 +42,20 @@ function CreateAccount({ onLogin }) {
     let renderErrors
     if(errors){
         renderErrors = errors.errors.map(error => {
-            return <li key={error}>{error}</li>
+            return <li key={error}><strong>{error}</strong></li>
         })
     }
-
+    
     return (
         <div>
             Create an Account:
+            {errors ?
+                <ul>
+                    {renderErrors[0]}
+                </ul>
+                :
+                null
+            }
             <form onSubmit={createSubmit}>
                 <input
                     type='text'
@@ -92,16 +99,7 @@ function CreateAccount({ onLogin }) {
                     value={createForm.profile_pic}
                     onChange={createChange}
                 />
-                <input
-                    type='submit'
-                />
-            {errors ?
-                <ul>
-                    {renderErrors}
-                </ul>
-                :
-                null
-            }
+                <button className="button-56" role="button">Submit</button>
             </form>
         </div>
     )

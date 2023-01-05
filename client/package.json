@@ -7,14 +7,18 @@
     "node": "16.x"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.7",
+    "@heroicons/react": "^2.0.13",
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "daisyui": "^2.46.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.4.5",
     "react-scripts": "4.0.3",
     "reactronica": "^0.8.1-canary.0",
+    "tailwindcss": "^3.2.4",
     "tone": "^14.7.77",
     "web-vitals": "^1.1.2"
   },

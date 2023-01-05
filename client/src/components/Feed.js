@@ -13,7 +13,7 @@ function Feed({user}){
         })
     },[])
     
-    if(!allUsers) return<h1>Loading ...</h1>
+    if(!allUsers) return<img src="https://media2.giphy.com/media/KbTUp85em6hdmmgTfK/giphy.gif" alt="loading"/>
 
     let filterUsers
     if(user){
@@ -29,7 +29,7 @@ function Feed({user}){
     })
 
     return(
-        <div>
+        <div className="feed">
             <h1>Feed</h1>
             {renderUsers}
         </div>

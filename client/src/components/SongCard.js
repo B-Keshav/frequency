@@ -49,11 +49,10 @@ function SongCard({ song }) {
     }
 
     return (
-        <div>
-            <h4>a song</h4>
-            <h4>{title}</h4>
-            <button onClick={playSound}>Play</button>
-            <button onClick={stopSound}>Stop</button>
+        <div className='song_card'>
+            <h4>Title: {title}</h4>
+            <button className="button-56" onClick={playSound}>Play</button>
+            <button className="button-56" onClick={stopSound}>Stop</button>
         </div>
     )
 }
