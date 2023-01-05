@@ -42,7 +42,7 @@ function Login({ onLogin }) {
         <div>
             Login:
             {errors ?
-                <h4>{errors.errors}</h4>
+                <h4><strong>{errors.errors}</strong></h4>
                 :
                 null
             }
@@ -61,9 +61,7 @@ function Login({ onLogin }) {
                     value={loginForm.password}
                     onChange={loginChange}
                 />
-                <input
-                    type='submit'
-                />
+                <button className="button-56" role="button">Submit</button>
             </form>
         </div>
     )

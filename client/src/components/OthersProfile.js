@@ -18,7 +18,7 @@ function OthersProfile({ user }) {
             })
     }, [id])
 
-    if (!userProfile) return <h1>Loading...</h1>
+    if (!userProfile) return <img src="https://media2.giphy.com/media/KbTUp85em6hdmmgTfK/giphy.gif" alt="loading"/>
 
     const { username, bio, profile_pic, songs } = userProfile
 

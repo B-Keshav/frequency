@@ -11,6 +11,10 @@
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   },
   "dependencies": {
+    "daisyui": "^2.46.1",
     "react-router-dom": "^6.4.5"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
   }
 }

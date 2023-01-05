@@ -170,9 +170,12 @@ function Mixer() {
     return (
         <>
             <br />
-            <button onClick={playSound}>Play</button>
-            <button onClick={stopSound}>Stop</button>
-            <button onClick={handleSubmit}>Save</button>
+            <div className='mixer_buttons'>
+            <button className="button-56" onClick={playSound}>Play</button>
+            <button className="button-56" onClick={stopSound}>Stop</button>
+            <button className="button-56" onClick={handleSubmit}>Save</button>
+            </div>
+            <h3><label>Instrument: </label></h3>
             <select onChange={synthChange}>
                 <option value="Synth">Synth</option>
                 <option value="MembraneSynth">MembraneSynth</option>
@@ -203,7 +206,7 @@ function Mixer() {
                     value={title}
                 />
             </form>
-            <button onClick={handleSubmit}>Save</button>
+            <button className="button-56" onClick={handleSubmit}>Save</button>
         </>
     )
 };

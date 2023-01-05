@@ -1,31 +1,225 @@
-.keyboard_container{
+.keyboard_container {
   display: flex;
   justify-content: flex-start;
 }
 
-.keyboard{
+.keyboard {
   display: flex;
   flex-direction: column;
 }
 
-.keyboard p{
+.keyboard p {
   width: 50px;
   text-align: center;
 }
 
-.keyboard h4{
+.keyboard h4 {
   padding-left: 50px;
   padding-right: 10px;
   height: 11px;
   text-align: center;
 }
 
-.unclicked_key{
+.unclicked_key {
   background-color: rgb(255, 255, 255);
   padding: 25px;
 }
 
-.clicked_key{
+.clicked_key {
   background-color: rgb(0, 0, 0);
   padding: 25px;
+}
+
+.landing_logo {
+  height: 40%;
+  width: 40%;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar button {
+  padding: 8px;
+}
+
+.welcome_message {
+  position: relative;
+  width: 300px;
+  left: 71%;
+  text-align: right;
+  bottom: 250px;
+}
+
+.feed_message{
+  width: 250px;
+}
+
+.login_form {
+  position: relative;
+  width: 200px;
+  left: 80%;
+  bottom: 340px;
+}
+
+.create_account {
+  position: relative;
+  width: 200px;
+  left: 80%;
+  bottom: 340px;
+}
+
+.mixer_buttons{
+  display: flex;
+  flex-direction: row;
+}
+
+.profile_card{
+  width: 25%;
+  padding: 12px;
+  border: 4px solid black;
+}
+
+.profile_card button{
+  background-color: lightgray;
+}
+
+.profile_card p{
+  max-width: 250px;
+}
+
+.profile_card img{
+  border-radius: 25px;
+  padding: 8px;
+  width: 200px;
+  height: 150px;
+}
+
+.song_card{
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+}
+
+.feed{
+  display: flex;
+  flex-direction: column;
+}
+
+/* <!-- HTML !-->
+<button class="button-56" role="button">Button 56</button> */
+
+.button-56 {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-56 a{
+  color: black;
+  text-decoration: none;
+}
+
+.button-56:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-56 {
+    padding: 0 40px;
+  }
+}
+
+/* <!-- HTML !-->
+<button className="button-27" role="button">Button 27</button>
+
+CSS */
+.button-27 {
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 5%;
+  will-change: transform;
+}
+
+.button-27 a{
+  color: white;
+  text-decoration: none;
+}
+
+.button-27:disabled {
+  pointer-events: none;
+}
+
+.button-27:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-27:active {
+  box-shadow: none;
+  transform: translateY(0);
 }
